@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: .
+    container_name: php-container-puzzle8
+    volumes:
+      - ./:/var/www
+      - ./xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+    ports:
+      - "8080:80"
+    environment:
+      XDEBUG_MODE: debug
+    command: php -S 0.0.0.0:80 -t /var/www/public
